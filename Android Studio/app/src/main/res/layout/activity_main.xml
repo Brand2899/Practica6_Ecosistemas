@@ -70,4 +70,5 @@
         app:layout_constraintStart_toEndOf="@+id/bnLeft"
         app:layout_constraintTop_toBottomOf="@+id/bnUp"
         tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

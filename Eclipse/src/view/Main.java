@@ -10,8 +10,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import controller.Instruction;
 import controller.MainController;
@@ -37,9 +39,9 @@ public class Main extends PApplet {
 	}
 	
 	public void setup() {
-		mc = new MainController(this);
 		startServer();
-		btn = "";
+		mc = new MainController(this);
+		btn = "";	
 	}
 	
 	public void draw() {
@@ -55,7 +57,9 @@ public class Main extends PApplet {
 					
 					try {
 						ServerSocket server = new ServerSocket(5000);
+						System.out.println("Esperando conexión....");
 						socket = server.accept();
+						System.out.println("Cliente conectado!!!");
 						
 						///////////////////////////////////////////////
 						

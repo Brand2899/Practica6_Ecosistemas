@@ -40,6 +40,9 @@ public class Main extends PApplet {
 				mc.moveLeft();
 			}
 		}
+		if(key == 'c') {
+			mc.changeColor();
+		}
 	}
 	
 }

@@ -32,4 +32,8 @@ public class MainController {
 	public void moveRight() {
 		l.moveRight();
 	}
+	
+	public void changeColor() {
+		l.changeColor();
+	}
 }

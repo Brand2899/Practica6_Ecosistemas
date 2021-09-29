@@ -17,7 +17,7 @@ public class MainController {
 		l.draw();
 	}
 	
-	public void moveUP() {
+	public void moveUp() {
 		l.moveUP();
 	}
 	

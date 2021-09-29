@@ -1,12 +1,12 @@
 package com.practica6_ecosistemas;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
-import com.practica6_ecosistemas.Instructions;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private BufferedReader br;
     private BufferedWriter bw;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = true;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
 
                         case (MotionEvent.ACTION_UP):
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = false;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
                     }
                     return true;
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = true;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
 
                         case (MotionEvent.ACTION_UP):
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = false;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
                     }
                     return true;
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = true;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
 
                         case (MotionEvent.ACTION_UP):
@@ -120,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = false;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
                     }
                     return true;
@@ -141,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = true;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
 
                         case (MotionEvent.ACTION_UP):
@@ -149,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = false;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
                     }
                     return true;
@@ -170,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = true;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
 
                         case (MotionEvent.ACTION_UP):
@@ -178,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
                             isPressed = false;
                             inst = new Instructions(btn, isPressed);
                             json = gson.toJson(inst);
+                            send(json);
                             break;
                     }
                     return true;
@@ -189,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(
                 () -> {
                     try {
-                        socket = new Socket("127.0.0.1", 5000);
+                        socket = new Socket("192.168.1.53", 5000);
                         System.out.println("Se ha conectado al servidor!!!");
 
                         /////////////////////////////////////////////////////
@@ -207,6 +218,19 @@ public class MainActivity extends AppCompatActivity {
                         while (true){
                             String line = br.readLine();
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+        ).start();
+    }
+
+    public void send(String msg){
+        new Thread(
+                () -> {
+                    try {
+                        bw.write(msg + "\n");
+                        bw.flush();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

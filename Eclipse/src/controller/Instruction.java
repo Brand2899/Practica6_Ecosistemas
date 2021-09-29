@@ -4,11 +4,6 @@ public class Instruction {
 	private String key;
 	private boolean isPressed;
 	
-	public Instruction(String key, boolean isPressed) {
-		this.key = key;
-		this.isPressed = isPressed;
-	}
-	
 	public Instruction() {
 		
 	}

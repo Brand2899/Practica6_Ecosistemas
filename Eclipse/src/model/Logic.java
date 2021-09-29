@@ -41,28 +41,28 @@ public class Logic {
 	
 	public void moveUP() {
 		if(posY > 0) {
-			posY -= 10;
+			posY -= 5;
 			f.setPosY(posY);
 		}
 	}
 	
 	public void moveDown() {
 		if(posY < 800) {
-			posY += 10;
+			posY += 5;
 			f.setPosY(posY);
 		}
 	}
 	
 	public void moveLeft() {
 		if(posX > 0) {
-			posX -= 10;
+			posX -= 5;
 			f.setPosX(posX);
 		}
 	}
 	
 	public void moveRight() {
 		if(posX < 1500) {
-			posX += 10;
+			posX += 5;
 			f.setPosX(posX);
 		}
 	}

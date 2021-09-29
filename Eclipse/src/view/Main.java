@@ -41,7 +41,7 @@ public class Main extends PApplet {
 	public void setup() {
 		startServer();
 		mc = new MainController(this);
-		btn = "";	
+		btn = "";
 	}
 	
 	public void draw() {
@@ -57,9 +57,7 @@ public class Main extends PApplet {
 					
 					try {
 						ServerSocket server = new ServerSocket(5000);
-						System.out.println("Esperando conexión....");
 						socket = server.accept();
-						System.out.println("Cliente conectado!!!");
 						
 						///////////////////////////////////////////////
 						
@@ -74,7 +72,9 @@ public class Main extends PApplet {
 						///////////////////////////////////////////////
 						
 						while(true) {
+							System.out.println("Esperando mensaje");
 							String line = br.readLine();
+							System.out.println("Recibido: " + line);
 							Gson gaston = new Gson();
 							Instruction inst = gaston.fromJson(line, Instruction.class);
 							btn = inst.getKey();
@@ -92,7 +92,7 @@ public class Main extends PApplet {
 		switch (btn){
 		case "UP":
 			if(isPressed) {
-				mc.moveUP();
+				mc.moveUp();
 			}
 			break;
 			
